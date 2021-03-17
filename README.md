@@ -54,3 +54,32 @@
 - 디자이너의 유지보수가 어려움 -> JSTL custom tag, Beans로 대체되고 있음.
 - MVC를 사용하면 많이 사용하지 않음(JSP는 View로만 사용하기 때문)
 - html 코드를 사용하려면 out.println(html)로 사용해야함.
+
+# form 태그
+- <form name="name" method="POST|GET" action="#(servlet)" enctype="Post 방식으로 전달되는 인코딩 방식을 지정">
+- enctype : application/x-www-form-urlencoded 방식 (default) : text만을 보냄.
+            multipart/form-data 방식 : text + file 보낼 수 있음.
+  
+# POST 방식
+- 주로 form 태그의 구성요소에 입력된 값을 전달할 때 사용.
+- - 입력된 데이터는 Body를 통해 전달 (데이터 크기에 제한이 없음)
+- 전달되는 값들은 주소 표시줄에 나타나지 않음. (queryString x)
+- - 보안성 유지
+- - GET 방식보다 처리속도가 늦음
+
+# GET 방식
+- form 태그가 존재하지 않는 문서에서 다른 문서로 데이터를 전달할 때 사용
+- QueryString으로 전달
+
+# JSP 내장 객체
+- request : client가 server에 정보를 요청
+- - 헤더 정보 추출에 관련된 메서드, 시스템의 정보 추출 관련 메서드, form 태그 구성 요소의 파라미터 처리 관련 메서드
+- - getParameter(String name): String, getParameterNames(): Enumeration, getParameterValues(String name): String[]
+- response : server가 client에게 정보를 응답
+- pageContext
+- session
+- application
+- out
+- config
+- page
+- exception
