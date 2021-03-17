@@ -74,7 +74,7 @@
 # JSP 내장 객체
 - request : client가 server에 정보를 요청
 - - 헤더 정보 추출에 관련된 메서드, 시스템의 정보 추출 관련 메서드, form 태그 구성 요소의 파라미터 처리 관련 메서드
-- - getParameter(String name): String, getParameterNames(): Enumeration, getParameterValues(String name): String[]
+- - getParameter(String name): String, getParameterNames(): Enumeration {변수의 이름 출력}, getParameterValues(String name): String[]
 - response : server가 client에게 정보를 응답
 - pageContext
 - session
@@ -83,3 +83,12 @@
 - config
 - page
 - exception
+
+# Request
+- getParameter() : DataType variable = request.getParameter("parameterName");
+- -클라이언트로부터 전달된 파라미터 [값]을 추출
+- - POST 방식과 GET 방식으로 전달된 파라미터 값들을 모두 추출
+- - 파라미터 값의 데이터 타입이 기본적으로 String으로 인식
+- setCharacterEncoding() : request.setCharacterEncoding("문자 집합");
+- -클라이언트로부터 Post 방식으로 전달된 데이터를 인자로 지정한 방식으로 인코딩
+- - form 요소의 입력 중 한글이 포함되어 있을 경우 사용
