@@ -97,3 +97,4 @@
 - - 하나의 파라미터가 여러 개의 값을 가지는 경우 ex) checkBox 등
 - getParameterNames() : Enumeration variable = request.getParameterNames("ParameterName");
 - - 요청에 존재하는 파라미터의 이름들을 추출 (파라미터의 값 추출 X)
+- 나머지 메서드는 이클립스 참고
