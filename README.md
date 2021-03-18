@@ -92,3 +92,8 @@
 - setCharacterEncoding() : request.setCharacterEncoding("문자 집합");
 - -클라이언트로부터 Post 방식으로 전달된 데이터를 인자로 지정한 방식으로 인코딩
 - - form 요소의 입력 중 한글이 포함되어 있을 경우 사용
+- Get 방식으로 한글 데이터가 전달될 때 인코딩 : URLEncoder의 encode("한글", "utf-8");
+- getParameterValues() : DataType[] variable = request.getParameterValues("parameterName");
+- - 하나의 파라미터가 여러 개의 값을 가지는 경우 ex) checkBox 등
+- getParameterNames() : Enumeration variable = request.getParameterNames("ParameterName");
+- - 요청에 존재하는 파라미터의 이름들을 추출 (파라미터의 값 추출 X)
