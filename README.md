@@ -98,3 +98,56 @@
 - getParameterNames() : Enumeration variable = request.getParameterNames("ParameterName");
 - - 요청에 존재하는 파라미터의 이름들을 추출 (파라미터의 값 추출 X)
 - 나머지 메서드는 이클립스 참고
+
+# Response
+- 서버가 클라이언트에 전달하는 응답 정보 (response, out)
+- 주요 역학 : 헤더 정보 설정, 리디렉션(request를 처리하고 응답을 다른 페이지로 전달)
+- setContentType(String type), setHeader(String name, value), addHeader(String name, value) - 그렇게 중요하지 않음
+- sendRedirect(url) : url에 지정된 JSP문서나 사이트로 리디렉트 수행 - [중요]
+- - response.sendRedirect(url) : 제어의 이동(<forward>, JS의 location객체의 replace()나 href)
+
+# Out
+- JSP 문서가 생성하는 출력 내용들을 브라우저에 전송하는 객체
+- 데이터 출력을 위한 메서드와 버퍼 관련 메서드 제공
+- - print(content)
+- - println(content)
+- 버퍼 관련
+- - getBufferSize() : 현재 버퍼의 전체크기를 바이트 단위로 반환, default = 8K
+- - getRemaining() : 현재 버퍼의 남아있는 크기를 바이트 단위로 반환
+- - flush() : 현재 버퍼에 있는 내용을 브라우저에 전송하고 버퍼를 지움
+- - isAutoFlush() : 버퍼가 가득 찰 경우 자동으로 flush 되도록 설정되어 있다면 true, page 지시문에서 autoFlush 속성이 true면 true
+- - clear() : 현재 버퍼의 내용을 브라우저에 출력하지 않고 버퍼를 비움, [flush()가 수행된 후 clear()할 경우 버퍼를 비운 후 IOException 발생]
+- - clearBuffer() : 현재 버퍼의 내용을 브라우저에 출력하지 않고 버퍼를 비움, [flush()가 수행된 후 clear()할 경우 버퍼를 비우고 IOException 발생하지 않음]
+- - close() : 버퍼에 있는 모든 내용을 브라우저에 출력하고 출력스트림을 닫는 기능
+
+# Session
+- HTTP protocol : 무상태 protocol
+- 상태를 저장하지 않는 것을 해결할 방법 필요 : cookies, session
+
+# Application
+- 어플리케이션이 실행되는 환경 정보들을 담고 있으며, 웹 어플리케이션 전체에서 사용되는 객체
+- 컨테이너 정보를 추출하기 위한 메서드
+- - getServletInfo()
+- - getMajorVersion()
+- - getMinorVersion()
+- 웹 어플리케이션 속성 관련 메서드
+- - getAttribute(name)
+- - getAttributeNames()
+- - setAttribute(name, value)
+- - removeAttribute(name)
+- 어플리케이션의 정보를 추출하기 위한 메서드
+- - getMimeType(filename)
+- - getResource(path)
+- - getPrealPath(path)
+- - getResourceAsStream(path)
+- - getContextPath()
+
+# Page
+- JSP에서 자기 자신을 참조할 때 사용
+
+# [중요] PageContext
+- 다른 모든 내장 객체에 대한 프로그램적인 접근 방법을 제공
+- 제어를 다른 페이지로 넘기기 위해 사용 (제어의 이동) (like. sendRedirect)
+- - forward(path)
+- 특정 문서의 실행 결과를 포함시킬 때 사용 (like. include)
+- - include(path)
